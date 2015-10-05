@@ -18,6 +18,7 @@ package net.systran.platform.translation.client.model;
 
 import net.systran.platform.translation.client.model.LanguagePair;
 import java.util.*;
+import net.systran.platform.translation.client.model.ErrorResponse;
 
 import io.swagger.annotations.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -25,12 +26,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @ApiModel(description = "")
 public class SupportedLanguageResponse  {
-  
+
   private String warning = null;
-  private String error = null;
+  private ErrorResponse error = null;
   private List<LanguagePair> languagePairs = new ArrayList<LanguagePair>() ;
 
-  
+
   /**
    * Warning at request level
    **/
@@ -43,20 +44,20 @@ public class SupportedLanguageResponse  {
     this.warning = warning;
   }
 
-  
+
   /**
    * Error at request level
    **/
   @ApiModelProperty(value = "Error at request level")
   @JsonProperty("error")
-  public String getError() {
+  public ErrorResponse getError() {
     return error;
   }
-  public void setError(String error) {
+  public void setError(ErrorResponse error) {
     this.error = error;
   }
 
-  
+
   /**
    * Array of language pairs
    **/
@@ -69,13 +70,13 @@ public class SupportedLanguageResponse  {
     this.languagePairs = languagePairs;
   }
 
-  
+
 
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
     sb.append("class SupportedLanguageResponse {\n");
-    
+
     sb.append("  warning: ").append(warning).append("\n");
     sb.append("  error: ").append(error).append("\n");
     sb.append("  languagePairs: ").append(languagePairs).append("\n");

@@ -18,15 +18,16 @@ package net.systran.platform.translation.client.model;
 
 import net.systran.platform.translation.client.model.TranslationOutput;
 import java.util.*;
+import net.systran.platform.translation.client.model.ErrorResponse;
 
 import io.swagger.annotations.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@ApiModel(description = "By default (synchronous mode), the response will be a JSON object containing the result of the translation.\n\n```\n  {\n    \"warning\": \"\", /* Warning at request level */\n    \"error\": \"\", /* Error at request level */\n    \"outputs\": [\n       {\n           \"warning\": \"\", /* Warning at input level */\n           \"error\": \"\", /* Error at input level */\n           \"detectedLanguage\": \"fr\", /* Result of the automatic language detection if selected */\n           \"detectedLanguageConfidence\": 0.73, /* automatic language detection confidence if selected */\n           \"output\": \"translated text 1\", /* Translate text */\n           \"backTranslation\": \"retranslation of output in fr\"\n       },\n       {\n           \"warning\": \"\", /* Warning at input level */\n           \"error\": \"\", /* Error at input level */\n           \"detectedLanguage\": \"fr\", /* Result of the automatic language detection if selected */\n           \"detectedLanguageConfidence\": 0.75, /* automatic language detection confidence if selected */\n           \"output\": \"translated text 2\" /* Translate text */\n           \"backTranslation\": \"retranslation of output in fr\"\n       }\n    ]\n  }\n```\n\nIn asynchronous mode, the response will be a JSON containing a request identifier. This identifier can then be used to poll the request status and its result when completed.\n\n```\n{\n   \"error\": \"\", /* Error at request level */\n   \"requestId\": \"54a3d860e62ea467b136eddb\" /* Request identifier to use to get the status, the result of the request and to cancel it */\n}\n```\n")
-public class TranslationResponse extends MultipartResponse {
+@ApiModel(description = "By default (synchronous mode), the response will be a JSON object containing the result of the translation.\n\n```\n  {\n    \"warning\": \"\", /* Warning at request level */\n    \"error\": {\n      \"message\": \"\" /* Error at request level */\n      \"info\": {}\n    },\n    \"outputs\": [\n       {\n           \"warning\": \"\", /* Warning at input level */\n           \"error\": \"\", /* Error at input level */\n           \"detectedLanguage\": \"fr\", /* Result of the automatic language detection if selected */\n           \"detectedLanguageConfidence\": 0.73, /* automatic language detection confidence if selected */\n           \"output\": \"translated text 1\", /* Translate text */\n           \"backTranslation\": \"retranslation of output in fr\"\n       },\n       {\n           \"warning\": \"\", /* Warning at input level */\n           \"error\": \"\", /* Error at input level */\n           \"detectedLanguage\": \"fr\", /* Result of the automatic language detection if selected */\n           \"detectedLanguageConfidence\": 0.75, /* automatic language detection confidence if selected */\n           \"output\": \"translated text 2\" /* Translate text */\n           \"backTranslation\": \"retranslation of output in fr\"\n       }\n    ]\n  }\n```\n\nIn asynchronous mode, the response will be a JSON containing a request identifier. This identifier can then be used to poll the request status and its result when completed.\n\n```\n{\n   \"error\": {\n     \"message\": \"\" /* Error at request level */\n     \"info\": {}\n   }\n   \"requestId\": \"54a3d860e62ea467b136eddb\" /* Request identifier to use to get the status, the result of the request and to cancel it */\n}\n```\n")
+public class TranslationResponse  {
   
   private String warning = null;
-  private String error = null;
+  private ErrorResponse error = null;
   private String requestId = null;
   private List<TranslationOutput> outputs = new ArrayList<TranslationOutput>() ;
 
@@ -49,10 +50,10 @@ public class TranslationResponse extends MultipartResponse {
    **/
   @ApiModelProperty(value = "Error at request level")
   @JsonProperty("error")
-  public String getError() {
+  public ErrorResponse getError() {
     return error;
   }
-  public void setError(String error) {
+  public void setError(ErrorResponse error) {
     this.error = error;
   }
 
@@ -88,7 +89,7 @@ public class TranslationResponse extends MultipartResponse {
   public String toString()  {
     StringBuilder sb = new StringBuilder();
     sb.append("class TranslationResponse {\n");
-    sb.append("  " + super.toString()).append("\n");
+    
     sb.append("  warning: ").append(warning).append("\n");
     sb.append("  error: ").append(error).append("\n");
     sb.append("  requestId: ").append(requestId).append("\n");

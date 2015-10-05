@@ -16,6 +16,7 @@
 
 package net.systran.platform.translation.client.model;
 
+import net.systran.platform.translation.client.model.ErrorResponse;
 
 import io.swagger.annotations.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -25,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class BatchCreate  {
   
   private String batchId = null;
-  private String error = null;
+  private ErrorResponse error = null;
 
   
   /**
@@ -46,10 +47,10 @@ public class BatchCreate  {
    **/
   @ApiModelProperty(value = "Error of the request")
   @JsonProperty("error")
-  public String getError() {
+  public ErrorResponse getError() {
     return error;
   }
-  public void setError(String error) {
+  public void setError(ErrorResponse error) {
     this.error = error;
   }
 

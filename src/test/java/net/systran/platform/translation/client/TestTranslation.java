@@ -66,7 +66,7 @@ public class TestTranslation {
         inputs.add("This is a test");
         String source = "en";
         String target = "fr";
-        TranslationResponse translationResponse = api.translationTranslateGet(inputs, source, target, null, null, null, null, null, null, null, null, null, null, null, null);
+        TranslationResponse translationResponse = api.translationTextTranslateGet(inputs, source, target, null, null, null, null, null, null, null, null, null, null);
         System.out.println(translationResponse.toString());
     }
 
@@ -76,7 +76,7 @@ public class TestTranslation {
         List<String> inputs = new ArrayList<String>();
         inputs.add("This is a test");
         String target = "fr";
-        TranslationResponse translationResponse = api.translationTranslateGet(inputs, null, target, null, null, null, null, null, null, null, null, null, null, null, null);
+        TranslationResponse translationResponse = api.translationTextTranslateGet(inputs, null, target, null, null, null, null, null, null, null, null, null, null);
         System.out.println(translationResponse.toString());
     }
 
@@ -87,7 +87,7 @@ public class TestTranslation {
         inputs.add("This is a test");
         inputs.add("I like playing football");
         String target = "fr";
-        TranslationResponse translationResponse = api.translationTranslateGet(inputs, null, target, null, null, null, null, null, null, null, null, null, null, null, null);
+        TranslationResponse translationResponse = api.translationTextTranslateGet(inputs, null, target, null, null, null, null, null, null, null, null, null, null);
         System.out.println(translationResponse.toString());
     }
 
@@ -99,7 +99,7 @@ public class TestTranslation {
         inputs.add("I like playing football");
         String target = "fr";
         Boolean withSource = true;
-        TranslationResponse translationResponse = api.translationTranslateGet(inputs, null, target, null, null, withSource, null, null, null, null, null, null, null, null, null);
+        TranslationResponse translationResponse = api.translationTextTranslateGet(inputs, null, target, null, null, withSource, null, null, null, null, null, null, null);
         System.out.println(translationResponse.toString());
     }
 
@@ -109,7 +109,7 @@ public class TestTranslation {
         List<String> inputs = new ArrayList<String>();
         inputs.add("<html>this is <b>black</b> dog");
         String target = "fr";
-        TranslationResponse translationResponse = api.translationTranslateGet(inputs, null, target, null, null, null, null, null, null, null, null, null, null, null, null);
+        TranslationResponse translationResponse = api.translationTextTranslateGet(inputs, null, target, null, null, null, null, null, null, null, null, null, null);
         System.out.println(translationResponse.toString());
     }
 
@@ -120,7 +120,7 @@ public class TestTranslation {
         inputs.add("<html>this is <b>black</b> dog");
         String target = "fr";
         String format = "text/html";
-        TranslationResponse translationResponse = api.translationTranslateGet(inputs, null, target, format, null, null, null, null, null, null, null, null, null, null, null);
+        TranslationResponse translationResponse = api.translationTextTranslateGet(inputs, null, target, format, null, null, null, null, null, null, null, null, null);
         System.out.println(translationResponse.toString());
     }
 
@@ -133,7 +133,7 @@ public class TestTranslation {
         String format = "text/html";
         Boolean withSource = true;
         Boolean withAnnotations = true;
-        TranslationResponse translationResponse = api.translationTranslateGet(inputs, null, target, format, null, withSource, withAnnotations, null, null, null, null, null, null, null, null);
+        TranslationResponse translationResponse = api.translationTextTranslateGet(inputs, null, target, format, null, withSource, withAnnotations, null, null, null, null, null, null);
         System.out.println(translationResponse.toString());
     }
 
@@ -147,7 +147,7 @@ public class TestTranslation {
         String format = "text/html";
         Boolean withSource = true;
         Boolean withAnnotations = true;
-        TranslationResponse translationResponse = api.translationTranslateGet(inputs, null, target, format, null, withSource, withAnnotations, null, null, null, null, null, null, null, null);
+        TranslationResponse translationResponse = api.translationTextTranslateGet(inputs, null, target, format, null, withSource, withAnnotations, null, null, null, null, null, null);
         System.out.println(translationResponse.toString());
     }
 
@@ -158,7 +158,7 @@ public class TestTranslation {
         File inputFile = new File(".//src//test//java//net//systran//platform//translation//client//test.html");
         String source = "en";
         String target = "fr";
-        TranslationFileResponse translationFileResponse = api.translationTranslateFileGet(inputFile, source, target, null, null, null, null, null, null, null, null, null, null, null);
+        TranslationFileResponse translationFileResponse = api.translationFileTranslateGet(inputFile, source, target, null, null, null, null, null, null, null, null, null, null, null);
         File out = new File (".//src//test//java//net//systran//platform//translation//client//translation_output.html");
         FileUtils.copyInputStreamToFile(translationFileResponse.getOutput(), out);
         System.out.println("Translated file saved in : " + out.getAbsolutePath());
@@ -169,7 +169,7 @@ public class TestTranslation {
         TranslationApi api = getTranslationApi();
         File inputFile = new File(".//src//test//java//net//systran//platform//translation//client//test.html");
         String target = "fr";
-        TranslationFileResponse translationFileResponse = api.translationTranslateFileGet(inputFile, null, target, null, null, null, null, null, null, null, null, null, null, null);
+        TranslationFileResponse translationFileResponse = api.translationFileTranslateGet(inputFile, null, target, null, null, null, null, null, null, null, null, null, null, null);
         System.out.println("DetectedLanguage : " + translationFileResponse.getDetectedLanguage() + "\n" + "DetectedLanguageConfidence : " + translationFileResponse.getDetectedLanguageConfidence());
         File out = new File (".//src//test//java//net//systran//platform//translation//client//translation_output.html");
         FileUtils.copyInputStreamToFile(translationFileResponse.getOutput(), out);
@@ -183,7 +183,7 @@ public class TestTranslation {
         String source = "en";
         String target = "fr";
         Boolean withSource = true;
-        TranslationFileResponse translationFileResponse = api.translationTranslateFileGet(inputFile, source, target, null, null, withSource, null, null, null, null, null, null, null, null);
+        TranslationFileResponse translationFileResponse = api.translationFileTranslateGet(inputFile, source, target, null, null, withSource, null, null, null, null, null, null, null, null);
         File sourceFile = new File (".//src//test//java//net//systran//platform//translation//client//translation_source.html");
         FileUtils.copyInputStreamToFile(translationFileResponse.getSource(), sourceFile);
         System.out.println("Source file saved in : " + sourceFile.getAbsolutePath());
@@ -201,7 +201,7 @@ public class TestTranslation {
         String target = "fr";
         Boolean withSource = true;
         Boolean withAnnotations = true;
-        TranslationFileResponse translationFileResponse = api.translationTranslateFileGet(inputFile, source, target, null, null, withSource, withAnnotations, null, null, null, null, null, null, null);
+        TranslationFileResponse translationFileResponse = api.translationFileTranslateGet(inputFile, source, target, null, null, withSource, withAnnotations, null, null, null, null, null, null, null);
         File sourceFile = new File (".//src//test//java//net//systran//platform//translation//client//translation_source.html");
         FileUtils.copyInputStreamToFile(translationFileResponse.getSource(), sourceFile);
         System.out.println("Source file saved in : " + sourceFile.getAbsolutePath());
@@ -218,7 +218,7 @@ public class TestTranslation {
         String target = "fr";
         Boolean withSource = true;
         Boolean withAnnotations = true;
-        TranslationFileResponse translationFileResponse = api.translationTranslateFileGet(inputFile, null, target, null, null, withSource, withAnnotations, null, null, null, null, null, null, null);
+        TranslationFileResponse translationFileResponse = api.translationFileTranslateGet(inputFile, null, target, null, null, withSource, withAnnotations, null, null, null, null, null, null, null);
         System.out.println("DetectedLanguage : " + translationFileResponse.getDetectedLanguage() + "\n" + "DetectedLanguageConfidence : " + translationFileResponse.getDetectedLanguageConfidence());
 
         File sourceFile = new File (".//src//test//java//net//systran//platform//translation//client//translation_source.html");
@@ -233,7 +233,7 @@ public class TestTranslation {
     // Translate file async
     public int getTranslationStatus(String requestId) throws ApiException, IOException {
         TranslationApi api = getTranslationApi();
-        TranslationStatus translationStatus = api.translationTranslateStatusGet(requestId, null);
+        TranslationStatus translationStatus = api.translationFileStatusGet(requestId, null);
         System.out.println(translationStatus.toString());
         if (translationStatus.getStatus().equals(TranslationStatus.StatusEnum.finished))
             return 1;
@@ -244,20 +244,20 @@ public class TestTranslation {
 
     public void getTranslateResult(String requestId) throws ApiException, IOException {
         TranslationApi api = getTranslationApi();
-        TranslationResponse translationResponse = api.translationTranslateResultGet(requestId, null);
-        System.out.println(translationResponse.toString());
-        if (translationResponse.getDetectedLanguage() != null)
-            System.out.println("DetectedLanguage : " + translationResponse.getDetectedLanguage() + "\n" + "DetectedLanguageConfidence : " + translationResponse.getDetectedLanguageConfidence());
+        TranslationFileResponse translationFileResponse = api.translationFileResultGet(requestId, null);
+        System.out.println(translationFileResponse.toString());
+        if (translationFileResponse.getDetectedLanguage() != null)
+            System.out.println("DetectedLanguage : " + translationFileResponse.getDetectedLanguage() + "\n" + "DetectedLanguageConfidence : " + translationFileResponse.getDetectedLanguageConfidence());
 
-        if (translationResponse.getSource() != null) {
+        if (translationFileResponse.getSource() != null) {
             File sourceFile = new File (".//src//test//java//net//systran//platform//translation//client//translation_source.html");
-            FileUtils.copyInputStreamToFile(translationResponse.getSource(), sourceFile);
+            FileUtils.copyInputStreamToFile(translationFileResponse.getSource(), sourceFile);
             System.out.println("Source file saved in : " + sourceFile.getAbsolutePath());
         }
 
-        if (translationResponse.getOutput() != null) {
+        if (translationFileResponse.getOutput() != null) {
             File out = new File (".//src//test//java//net//systran//platform//translation//client//translation_output.html");
-            FileUtils.copyInputStreamToFile(translationResponse.getOutput(), out);
+            FileUtils.copyInputStreamToFile(translationFileResponse.getOutput(), out);
             System.out.println("Translated file saved in : " + out.getAbsolutePath());
         }
     }
@@ -269,7 +269,7 @@ public class TestTranslation {
         String source = "en";
         String target = "fr";
         Boolean async = true;
-        TranslationFileResponse translationFileResponse = api.translationTranslateFileGet(inputFile, source, target, null, null, null, null, null, null, null, null, async, null, null);
+        TranslationFileResponse translationFileResponse = api.translationFileTranslateGet(inputFile, source, target, null, null, null, null, null, null, null, null, async, null, null);
         System.out.println(translationFileResponse.toString());
         String requestId = translationFileResponse.getRequestId();
         assertNotNull(requestId);
@@ -291,7 +291,7 @@ public class TestTranslation {
         Boolean withSource = true;
         Boolean withAnnotations = true;
         Boolean async = true;
-        TranslationFileResponse translationFileResponse = api.translationTranslateFileGet(inputFile, null, target, null, null, withSource, withAnnotations, null, null, null, null, async, null, null);
+        TranslationFileResponse translationFileResponse = api.translationFileTranslateGet(inputFile, null, target, null, null, withSource, withAnnotations, null, null, null, null, async, null, null);
         System.out.println(translationFileResponse.toString());
         String requestId = translationFileResponse.getRequestId();
         assertNotNull(requestId);
@@ -311,13 +311,13 @@ public class TestTranslation {
         TranslationApi api = getTranslationApi();
 
         // create a batch to do some translations
-        BatchCreate batchCreate = api.translationBatchCreateGet(null);
+        BatchCreate batchCreate = api.translationFileBatchCreateGet(null);
         System.out.println("batchCreate response : " + batchCreate.toString());
         assertNotNull(batchCreate.getBatchId());
         String batchId = batchCreate.getBatchId();
 
         // get status for new created batch
-        BatchStatus batchStatus = api.translationBatchStatusGet(batchId, null);
+        BatchStatus batchStatus = api.translationFileBatchStatusGet(batchId, null);
         System.out.println("batchStatus response : " + batchStatus.toString());
 
         // add a translation to the batch
@@ -327,13 +327,13 @@ public class TestTranslation {
         Boolean withSource = true;
         Boolean withAnnotations = true;
         Boolean async = true;
-        TranslationFileResponse translationFileResponse = api.translationTranslateFileGet(inputFile, source, target, null, null, withSource, withAnnotations, null, null, null, null, async, batchId, null);
+        TranslationFileResponse translationFileResponse = api.translationFileTranslateGet(inputFile, source, target, null, null, withSource, withAnnotations, null, null, null, null, async, batchId, null);
         System.out.println("translationFileResponse : " + translationFileResponse.toString());
         String requestId = translationFileResponse.getRequestId();
         assertNotNull(requestId);
 
         // get status after adding a translation request
-        BatchStatus batchStatusWithRequest = api.translationBatchStatusGet(batchId, null);
+        BatchStatus batchStatusWithRequest = api.translationFileBatchStatusGet(batchId, null);
         System.out.println("batchStatus with a translation request : " + batchStatusWithRequest.toString());
 
         int finish = 0;
@@ -346,7 +346,7 @@ public class TestTranslation {
         getTranslateResult(requestId);
 
         // close the batch after getting result of translation
-        BatchClose batchClose = api.translationBatchCloseGet(batchId, null);
+        BatchClose batchClose = api.translationFileBatchCloseGet(batchId, null);
         System.out.println("Close the batch after getting translation result : " + batchClose.toString());
     }
 }

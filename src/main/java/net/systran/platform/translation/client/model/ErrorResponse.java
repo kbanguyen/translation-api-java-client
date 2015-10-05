@@ -16,42 +16,27 @@
 
 package net.systran.platform.translation.client.model;
 
-import net.systran.platform.translation.client.model.ErrorResponse;
 
 import io.swagger.annotations.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @ApiModel(description = "")
-public class BatchClose  {
+public class ErrorResponse  {
   
-  private String status = null;
-  private ErrorResponse error = null;
+  private String message = null;
 
   
   /**
-   * Result of the request
+   * Readable description of the error
    **/
-  @ApiModelProperty(value = "Result of the request")
-  @JsonProperty("status")
-  public String getStatus() {
-    return status;
+  @ApiModelProperty(required = true, value = "Readable description of the error")
+  @JsonProperty("message")
+  public String getMessage() {
+    return message;
   }
-  public void setStatus(String status) {
-    this.status = status;
-  }
-
-  
-  /**
-   * Error of the request
-   **/
-  @ApiModelProperty(value = "Error of the request")
-  @JsonProperty("error")
-  public ErrorResponse getError() {
-    return error;
-  }
-  public void setError(ErrorResponse error) {
-    this.error = error;
+  public void setMessage(String message) {
+    this.message = message;
   }
 
   
@@ -59,10 +44,9 @@ public class BatchClose  {
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
-    sb.append("class BatchClose {\n");
+    sb.append("class ErrorResponse {\n");
     
-    sb.append("  status: ").append(status).append("\n");
-    sb.append("  error: ").append(error).append("\n");
+    sb.append("  message: ").append(message).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

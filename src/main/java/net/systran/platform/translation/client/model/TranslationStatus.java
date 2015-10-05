@@ -16,6 +16,7 @@
 
 package net.systran.platform.translation.client.model;
 
+import net.systran.platform.translation.client.model.ErrorResponse;
 
 import io.swagger.annotations.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -27,7 +28,7 @@ import java.util.Map;
 @ApiModel(description = "")
 public class TranslationStatus  {
   
-  private String error = null;
+  private ErrorResponse error = null;
   private String batchId = null;
   private Boolean cancelled = null;
   private Double createdAt = null;
@@ -36,7 +37,7 @@ public class TranslationStatus  {
   private Double finishedAt = null;
   private Integer finishedSteps = null;
   public enum StatusEnum {
-    registered("registered"), _import("import"), started("started"), export("export"), finished("finished"), error("error"); 
+    registered("registered"), _import("import"), started("started"), pending("pending"), export("export"), finished("finished"), error("error"); 
 
     private final String text;
     private static Map<String, StatusEnum> namesMap = new HashMap<String, StatusEnum>();
@@ -45,6 +46,7 @@ public class TranslationStatus  {
       namesMap.put("registered", registered);
       namesMap.put("import", _import);
       namesMap.put("started", started);
+      namesMap.put("pending", pending);
       namesMap.put("export", export);
       namesMap.put("finished", finished);
       namesMap.put("error", error);
@@ -77,10 +79,10 @@ public class TranslationStatus  {
    **/
   @ApiModelProperty(value = "Error of the request")
   @JsonProperty("error")
-  public String getError() {
+  public ErrorResponse getError() {
     return error;
   }
-  public void setError(String error) {
+  public void setError(ErrorResponse error) {
     this.error = error;
   }
 

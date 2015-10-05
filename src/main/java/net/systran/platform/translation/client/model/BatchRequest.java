@@ -20,6 +20,9 @@ package net.systran.platform.translation.client.model;
 import io.swagger.annotations.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * Batch Request
  **/
@@ -27,7 +30,38 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class BatchRequest  {
   
   private String id = null;
-  private String status = null;
+  public enum StatusEnum {
+    pending("pending"), finished("finished"), cancelled("cancelled"), error("error"); 
+
+    private final String text;
+    private static Map<String, StatusEnum> namesMap = new HashMap<String, StatusEnum>();
+    
+    static { 
+      namesMap.put("pending", pending);
+      namesMap.put("finished", finished);
+      namesMap.put("cancelled", cancelled);
+      namesMap.put("error", error);
+    }
+    
+    private StatusEnum(final String text) {
+      this.text = text;
+    }
+
+    @JsonCreator
+    public static StatusEnum forValue(String value) throws Exception {
+      if (namesMap.get(value) == null) {
+        throw new Exception("Invalid enum value");
+      }
+
+      return namesMap.get(value);
+    }
+
+    @Override
+    public String toString() {
+      return text;
+    }
+  };
+  private StatusEnum status = null;
 
   
   /**
@@ -48,10 +82,10 @@ public class BatchRequest  {
    **/
   @ApiModelProperty(required = true, value = "Status of the request")
   @JsonProperty("status")
-  public String getStatus() {
+  public StatusEnum getStatus() {
     return status;
   }
-  public void setStatus(String status) {
+  public void setStatus(StatusEnum status) {
     this.status = status;
   }
 

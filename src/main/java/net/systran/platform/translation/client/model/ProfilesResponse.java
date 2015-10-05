@@ -18,6 +18,7 @@ package net.systran.platform.translation.client.model;
 
 import net.systran.platform.translation.client.model.Profile;
 import java.util.*;
+import net.systran.platform.translation.client.model.ErrorResponse;
 
 import io.swagger.annotations.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -26,7 +27,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @ApiModel(description = "")
 public class ProfilesResponse  {
   
+  private ErrorResponse error = null;
   private List<Profile> profiles = new ArrayList<Profile>() ;
+
+  
+  /**
+   * Error at request level
+   **/
+  @ApiModelProperty(value = "Error at request level")
+  @JsonProperty("error")
+  public ErrorResponse getError() {
+    return error;
+  }
+  public void setError(ErrorResponse error) {
+    this.error = error;
+  }
 
   
   /**
@@ -48,6 +63,7 @@ public class ProfilesResponse  {
     StringBuilder sb = new StringBuilder();
     sb.append("class ProfilesResponse {\n");
     
+    sb.append("  error: ").append(error).append("\n");
     sb.append("  profiles: ").append(profiles).append("\n");
     sb.append("}\n");
     return sb.toString();

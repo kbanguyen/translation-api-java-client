@@ -16,6 +16,7 @@
 
 package net.systran.platform.translation.client.model;
 
+import net.systran.platform.translation.client.model.ErrorResponse;
 
 import io.swagger.annotations.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -24,7 +25,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @ApiModel(description = "")
 public class TranslationCancel  {
   
-  private String error = null;
+  private ErrorResponse error = null;
 
   
   /**
@@ -32,10 +33,10 @@ public class TranslationCancel  {
    **/
   @ApiModelProperty(value = "Error of the request")
   @JsonProperty("error")
-  public String getError() {
+  public ErrorResponse getError() {
     return error;
   }
-  public void setError(String error) {
+  public void setError(ErrorResponse error) {
     this.error = error;
   }
 

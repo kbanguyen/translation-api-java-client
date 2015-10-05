@@ -17,6 +17,7 @@
 package net.systran.platform.translation.client.model;
 
 import net.systran.platform.translation.client.model.BatchRequest;
+import net.systran.platform.translation.client.model.ErrorResponse;
 import java.util.*;
 
 import io.swagger.annotations.*;
@@ -32,7 +33,7 @@ public class BatchStatus  {
   private Double expireAt = null;
   private Double finishedAt = null;
   private List<BatchRequest> requests = new ArrayList<BatchRequest>() ;
-  private String error = null;
+  private ErrorResponse error = null;
 
   
   /**
@@ -118,10 +119,10 @@ public class BatchStatus  {
    **/
   @ApiModelProperty(value = "Error of the request")
   @JsonProperty("error")
-  public String getError() {
+  public ErrorResponse getError() {
     return error;
   }
-  public void setError(String error) {
+  public void setError(ErrorResponse error) {
     this.error = error;
   }
 
