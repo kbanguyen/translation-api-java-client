@@ -39,7 +39,27 @@ public class ErrorResponse  {
     this.message = message;
   }
 
-  
+  @JsonProperty("domain")
+  public String getDomain(){
+      return domain;
+  }
+  public void setDomain(String domain){
+      this.domain = domain;
+  }
+  @JsonProperty("statusCode")
+  public String getStatusCode(){
+      return statusCode;
+  }
+  public void setStatusCode(String statusCode){
+      this.statusCode = statusCode;
+  }
+  @JsonProperty("details")
+  public String getDetails(){
+      return this.details;
+  }
+  public void setDetails(String details){
+      this.details = details;
+  }
 
   @Override
   public String toString()  {
@@ -47,6 +67,9 @@ public class ErrorResponse  {
     sb.append("class ErrorResponse {\n");
     
     sb.append("  message: ").append(message).append("\n");
+    sb.append("  domain: ").append(domain).append("\n");
+    sb.append("  statusCode: ").append(statusCode).append("\n");
+    sb.append("  details: ").append(details).append("\n");
     sb.append("}\n");
     return sb.toString();
   }
